@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Home } from './pages';
+import { Home, Pins, Lists, Map, Share, Profile } from './pages';
 import { Header, Modal } from './layout';
 import './styles/app.css';
-
+import { Switch, Route } from 'react-router-dom';
 
 function App() {
 
@@ -20,9 +20,14 @@ function App() {
     return (
         <>
             <Header />
-
-            <Home />
-
+            <Switch>
+                <Route exact path="/" ><Home /> </Route>
+                <Route path="/pins" ><Pins /></Route>
+                <Route path="/lists" ><Lists /></Route>
+                <Route path="/map" ><Map /></Route>
+                <Route path="/share" ><Share /></Route>
+                <Route path="/profile" ><Profile /></Route>
+            </Switch>
             {/* <Modal isItOpen={ModalClose} updateOpen={handleModalClose} /> */}
 
         </>
