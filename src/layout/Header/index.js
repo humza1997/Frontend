@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import './style.css'
 import { finalAnim } from "./assets/animate.js"
 import { logo } from "../../logo.svg"
-
+import Icon from '@mdi/react'
+import { mdiLoginVariant, mdiMapMarker, mdiFormatListBulleted, mdiMapOutline, mdiShareVariant, mdiAccountOutline } from '@mdi/js'
 
 const Header = () => {
     let toloc = (id) => {
@@ -30,12 +31,36 @@ const Header = () => {
                 </div> </NavLink>
 
             <ul class="text-white text-right">
-                <NavLink exact to="/" activeClassName="current" >Login</NavLink>
-                <NavLink to="/pins" activeClassName="current" >Pins</NavLink>
-                <NavLink to="/lists" activeClassName="current" >Lists</NavLink>
-                <NavLink to="/map" activeClassName="current" >Map</NavLink>
-                <NavLink to="/share" activeClassName="current" >Share</NavLink>
-                <NavLink to="/profile" activeClassName="current">Profile</NavLink>
+                <NavLink exact to="/" activeClassName="current" > <Icon path={mdiLoginVariant}
+                    title="Log In"
+                    size={1.1}
+                    className="inline mb-1 mdiIcon"
+                /></NavLink>
+                <NavLink to="/pins" activeClassName="current" ><Icon path={mdiMapMarker}
+                    title="Pins"
+                    size={1.1}
+                    className="inline mb-1 mdiIcon"
+                /></NavLink>
+                <NavLink to="/lists" activeClassName="current" ><Icon path={mdiFormatListBulleted}
+                    title="Lists"
+                    size={1.1}
+                    className="inline mb-1 mdiIcon"
+                /></NavLink>
+                <NavLink to="/map" activeClassName="current" ><Icon path={mdiMapOutline}
+                    title="Map"
+                    size={1.1}
+                    className="inline mb-1 mdiIcon"
+                /></NavLink>
+                <NavLink to="/share" activeClassName="current" ><Icon path={mdiShareVariant}
+                    title="Share"
+                    size={1.1}
+                    className="inline mb-1 mdiIcon"
+                /></NavLink>
+                <NavLink to="/profile" activeClassName="current"><Icon path={mdiAccountOutline}
+                    title="Profile"
+                    size={1.1}
+                    className="inline mb-1 mdiIcon"
+                /></NavLink>
             </ul>
 
         </header>
