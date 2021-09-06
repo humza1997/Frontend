@@ -71,14 +71,14 @@ const Home = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <input class=" text-white gradscheme rounded-full focus:bg-purple-700 w-full px-28 font-bold text-lg mx-auto p-2 " name="submit" type="submit" value="Sign in" />
+                                            <input class=" text-white gradscheme transform transition-all hover:scale-110 cursor-pointer  rounded-full focus:bg-purple-700 w-full px-28 font-bold text-lg mx-auto p-2 " name="submit" type="submit" value="Sign in" />
                                         </div>
                                     </div>
                                 </form>
                                 <div class="pt-5 text-center text-gray-400 text-xs">
                                     <span>
                                         Don't have an account yet? Sign up
-                                        <NavLink to="register" activeClassName="current" class="text-purple-400 hover:text-purple-500 hover:underline"> here.</NavLink></span>
+                                        <NavLink to="register" activeClassName="current" class="text-purple-400 transform transition-all hover:scale-110 hover:text-purple-500 hover:underline"> here.</NavLink></span>
                                 </div>
                             </Route>
                             <Route path="/register">
@@ -109,7 +109,7 @@ const Home = () => {
                                             <input class=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" name="password2" type="password" placeholder="Confirm password"></input>
                                         </div>
                                         <div>
-                                            <input class=" text-white gradscheme rounded-full focus:bg-purple-700 w-full px-28 font-bold text-lg mx-auto p-2 " name="submit" type="submit" value="Register" />
+                                            <input class=" text-white transform transition-all hover:scale-110 cursor-pointer gradscheme rounded-full focus:bg-purple-700 w-full px-28 font-bold text-lg mx-auto p-2 " name="submit" type="submit" value="Register" />
                                         </div>
                                     </div>
                                 </form>
