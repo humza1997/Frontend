@@ -77,12 +77,47 @@ const Home = () => {
                                 </form>
                                 <div class="pt-5 text-center text-gray-400 text-xs">
                                     <span>
-                                        Don't have an account? Sign up
-                                        <NavLink to="/shav" activeClassName="current" class="text-purple-400 hover:text-purple-500 hover:underline"> here.</NavLink></span>
+                                        Don't have an account yet? Sign up
+                                        <NavLink to="register" activeClassName="current" class="text-purple-400 hover:text-purple-500 hover:underline"> here.</NavLink></span>
                                 </div>
                             </Route>
-                            <Route path="/shav">
-                                <p>Shav</p>
+                            <Route path="/register">
+                                <div class="mb-4">
+                                    <h3 class="text-center font-semibold text-2xl text-gray-800">Register</h3>
+                                    <p class="text-center text-gray-500 mt-3">Please register to use PinPlace</p>
+                                </div>
+                                <form onSubmit={handleSubmit}>
+                                    <div class="space-y-5">
+                                        <div class="space-y-2">
+                                            <label htmlFor="email" class="text-sm font-medium  tracking-wide">Email: </label>
+                                            <input class=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="email@example.com" name="email" type="email"></input>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <label htmlFor="username" class="text-sm font-medium  tracking-wide">Username: </label>
+                                            <input class=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="Username" name="username" type="text"></input>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <label htmlFor="password" class="mb-5 text-sm font-medium  tracking-wide">
+                                                Password
+                                            </label>
+                                            <input class=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" name="password" type="password" placeholder="Enter password"></input>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <label htmlFor="password2" class="mb-5 text-sm font-medium  tracking-wide">
+                                                Confirm Password
+                                            </label>
+                                            <input class=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" name="password2" type="password" placeholder="Confirm password"></input>
+                                        </div>
+                                        <div>
+                                            <input class=" text-white gradscheme rounded-full focus:bg-purple-700 w-full px-28 font-bold text-lg mx-auto p-2 " name="submit" type="submit" value="Register" />
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="pt-5 text-center text-gray-400 text-xs">
+                                    <span>
+                                        Already have an account? Log in
+                                        <NavLink to="/" activeClassName="current" className="text-purple-400 hover:text-purple-500 hover:underline"> here.</NavLink></span>
+                                </div>
                             </Route>
                         </Switch>
 
