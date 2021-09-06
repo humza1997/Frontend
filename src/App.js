@@ -28,7 +28,7 @@ function App() {
                 <Route path="/map" ><Map /></Route>
                 <Route path="/share" ><Share /></Route>
                 <Route path="/profile" ><Profile /></Route>
-                <Route path="/Error404" ><Error404 /></Route>
+                <Route path="/404" ><Error404 /></Route>
             </Switch>
             {/* <Modal isItOpen={ModalClose} updateOpen={handleModalClose} /> */}
 
