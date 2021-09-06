@@ -43,5 +43,5 @@ ul a {
 
 #logo:hover {
   fill: #d9077e;
-  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.2));
+  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.1));
 }
