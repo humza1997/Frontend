@@ -9,43 +9,24 @@ const Map = () => {
 
     return (
         <>
-            <main>
-                <section className="relative block h-2/3 ">
-                    <div id="profile-background"
-                        className="absolute top-0 w-full h-full bg-center bg-cover"
-                    >
-                        <span
-                            className="w-full h-full absolute gradscheme"
-                        ></span>
-                    </div>
-                    <div
-                        className="top-auto bottom-0 left-0 right-0 w-full absolute overflow-hidden"
-                    >
-                        <svg
-                            className=" bottom-0 overflow-hidden"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 2560 50"
-                            x="0"
-                            y="0"
-                            fill="white"
-                        >
-                            <polygon
-                                className="fill-current text-white"
-                                points="2560 0 2560 50 0 50"
-                            ></polygon>
-                        </svg>
-                    </div>
-                </section>
-                <section className="relative py-16">
-                    <div className="container mx-auto px-4">
-                        <div id="mapBox" className="relative flex flex-col min-w-0 break-words bg-white w-full h-5/6 mb-6 shadow-lg rounded-3xl">
-                            <div id="profile-box" className="px-6">
-
-                            </div>
+            <div class="min-w-screen min-h-screen gradscheme flex items-center p-5 lg:p-20 overflow-hidden relative">
+                <div id="errorbox" class="flex-1 min-w-full rounded-3xl bg-white shadow-xl p-10 lg:p-20 relative md:flex items-center text-center md:text-left">
+                    <div class="w-full md:w-1/2">
+                        <div class="mb-10 md:mb-20 font-light">
+                            <h1 class="font-black uppercase text-3xl lg:text-5xl mb-10">You seem to be lost!</h1>
+                            <p className="text-xl">The page you're looking for isn't available. Try reading the map again! Or just use the Go Back button below. </p>
                         </div>
+                        <div class="mb-20 md:mb-0">
+                            <NavLink to="/">
+                                <button class="text-lg font-light outline-none focus:outline-none transform transition-all hover:scale-110 text-yellow-500 hover:text-yellow-600">
+
+                                    Go Back</button> </NavLink>
+                        </div>
+
                     </div>
-                </section>
-            </main>
+
+                </div>
+            </div>
         </>
     )
 }
