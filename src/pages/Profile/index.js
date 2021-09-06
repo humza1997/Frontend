@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import './style.css'
 import { NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
+import Icon from '@mdi/react'
+import { mdiMapMarker } from '@mdi/js'
 
 const Profile = () => {
 
@@ -77,7 +79,7 @@ const Profile = () => {
                                             <NavLink to="/profile/edit" activeClassName="current">
 
                                                 <button
-                                                    className="gradscheme active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded-md outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                                                    className="gradscheme transform transition-all hover:scale-110 active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded-md outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                                                     type="button"
                                                 >
                                                     <svg id="search-icon" class="search-icon" class="h-5 inline mr-2" viewBox="0 0 477.873 477.873" fill="white">
@@ -130,7 +132,11 @@ const Profile = () => {
                                     </h3>
                                     <div className="text-sm leading-normal mt-0 mb-2 font-bold uppercase">
                                         <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>{" "}
-                                        London, United Kingdom
+                                        <Icon path={mdiMapMarker}
+                                            title="User Profile"
+                                            size={1}
+                                            className="inline mb-1"
+                                        /> London, United Kingdom
                                     </div>
                                     <div className="mb-2  mt-10">
                                         <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
@@ -170,7 +176,7 @@ const Profile = () => {
                                                         <h6 className="text-xl font-bold">Profile Settings</h6>
                                                         <NavLink to="/profile" activeClassName="current">
                                                             <button
-                                                                className="gradscheme active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded-md outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                                                                className="gradscheme transform transition-all hover:scale-110 active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded-md outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                                                                 type="button"
                                                             >
                                                                 <svg id="search-icon" class="search-icon" class="h-5 inline" viewBox="0 0 492 492" fill="white">
@@ -287,8 +293,8 @@ const Profile = () => {
                                             </div>
                                             <div class="flex flex-row justify-around">
                                                 <NavLink to="/">
-                                                    <input class=" text-white gradscheme rounded-full focus:bg-purple-700 w-auto px-10 font-bold text-lg mx-auto p-2 " name="submit" type="submit" value="Log Out" /></NavLink>
-                                                <NavLink to="/profile"> <input class=" text-white gradscheme rounded-full focus:bg-purple-700 w-auto px-10 font-bold text-lg mx-auto p-2 " name="submit" type="submit" value="Save Changes" /> </NavLink>
+                                                    <input class=" text-white transform transition-all hover:scale-110  cursor-pointer gradscheme rounded-full focus:bg-purple-700 w-auto px-10 font-bold text-lg mx-auto p-2 " name="submit" type="submit" value="Log Out" /></NavLink>
+                                                <NavLink to="/profile"> <input class=" transform transition-all hover:scale-110 cursor-pointer  text-white gradscheme rounded-full focus:bg-purple-700 w-auto px-10 font-bold text-lg mx-auto p-2 " name="submit" type="submit" value="Save Changes" /> </NavLink>
                                             </div>
                                         </div>
                                     </Route>
