@@ -45,7 +45,7 @@ const Home = () => {
                             <div class="space-y-5">
                                 <div class="space-y-2">
                                     <label htmlFor="email" class="text-sm font-medium text-gray-700 tracking-wide">Email:</label>
-                                    <input class=" shadow-sm border rounded-md w-full py-2 px-3 text-gray-700 mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="shav@example.com" name="email" type="email"></input>
+                                    <input class=" shadow-sm border rounded-md w-full py-2 px-3 text-gray-700 mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="email@example.com" name="email" type="email"></input>
                                 </div>
                                 <div class="space-y-2">
                                     <label htmlFor="password" class="mb-5 text-sm font-medium text-gray-700 tracking-wide">
