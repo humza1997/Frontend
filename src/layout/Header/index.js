@@ -36,10 +36,12 @@ const Header = () => {
                 </div> </NavLink>
 
             <ul class="text-white text-right">
-                <NavLink to="/AboutMe" activeClassName="current" >Pins</NavLink>
-                <NavLink to="/TechStack" activeClassName="current" >Lists</NavLink>
-                <NavLink to="/Portfolio" activeClassName="current" >Share</NavLink>
-                <NavLink to="/Contact" activeClassName="current">Profile</NavLink>
+                <NavLink exact to="/" activeClassName="current" >Login</NavLink>
+                <NavLink to="/pins" activeClassName="current" >Pins</NavLink>
+                <NavLink to="/lists" activeClassName="current" >Lists</NavLink>
+                <NavLink to="/map" activeClassName="current" >Map</NavLink>
+                <NavLink to="/share" activeClassName="current" >Share</NavLink>
+                <NavLink to="/profile" activeClassName="current">Profile</NavLink>
             </ul>
 
         </header>
