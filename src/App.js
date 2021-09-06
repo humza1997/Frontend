@@ -22,11 +22,13 @@ function App() {
             <Header />
             <Switch>
                 <Route exact path="/" ><Home /> </Route>
+                <Route exact path="/register" ><Home /> </Route>
                 <Route path="/pins" ><Pins /></Route>
                 <Route path="/lists" ><Lists /></Route>
                 <Route path="/map" ><Map /></Route>
                 <Route path="/share" ><Share /></Route>
                 <Route path="/profile" ><Profile /></Route>
+
             </Switch>
             {/* <Modal isItOpen={ModalClose} updateOpen={handleModalClose} /> */}
 
