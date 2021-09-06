@@ -31,7 +31,7 @@ const Profile = () => {
     return (
         <>
             <main>
-                <section className="relative block h-1/3 ">
+                <section className="relative block h-1/2 ">
                     <div id="profile-background"
                         className="absolute top-0 w-full h-full bg-center bg-cover"
                     >
@@ -59,7 +59,7 @@ const Profile = () => {
                 </section>
                 <section className="relative py-16">
                     <div className="container mx-auto px-4">
-                        <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-3xl -mt-64">
+                        <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-3xl -mt-96">
                             <div id="profile-box" className="px-6">
 
 
@@ -127,7 +127,7 @@ const Profile = () => {
 
                                 </div>
                                 <div className="text-center mt-12">
-                                    <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+                                    <h3 className="text-4xl font-semibold leading-normal mb-2  mb-2">
                                         Humza Muzammal
                                     </h3>
                                     <div className="text-sm leading-normal mt-0 mb-2 font-bold uppercase">
@@ -153,14 +153,12 @@ const Profile = () => {
                                         <div className="mt-10 py-10 border-t text-center">
                                             <div className="flex flex-wrap justify-center">
                                                 <div className="w-full lg:w-9/12 px-4">
-                                                    <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
+                                                    <p className="mb-4 text-lg leading-relaxed ">
                                                         In 2018, I graduated from Queen Mary University of London, with a BEng in Mechanical Engineering. Shortly after, I started a graduate scheme in Building Services Engineering, working for the largest housing association in London. Two years into my grad scheme, I made the decision to switch careers to tech and I haven’t looked back since!
                                                     </p>
-                                                    <a
-                                                        href="#"
-                                                    >
+                                                    <NavLink to="/pins" activeClassName="current">
                                                         Click to see my Pins
-                                                    </a>
+                                                    </NavLink>
                                                 </div>
                                             </div>
                                         </div>
