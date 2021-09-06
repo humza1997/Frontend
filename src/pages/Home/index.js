@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import './styleHome.css'
 import { NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
+import Typewriter from 'typewriter-effect';
+import { shuffle } from "../../actions"
 
 const Home = () => {
 
@@ -26,14 +28,25 @@ const Home = () => {
             .catch(console.warn)
     };
 
+
     return (
         <div class="relative"><div class="absolute gradscheme inset-0 z-0"></div>
             <div class="min-h-screen sm:flex sm:flex-row mx-0 justify-center">
                 <div class="flex-col flex  self-center p-10 sm:max-w-5xl xl:max-w-2xl  z-10">
                     <div class="hidden lg:flex flex-col  text-white">
 
-                        <h1 class="mb-3 font-bold text-5xl"><img src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif" width="70" class="inline" /> Hi! Any good recommendations?</h1>
-                        <p class="pr-3 leading-6 ">Welcome to PinPlace! We are a quick, at-hand app to jot down, sort, organize, annotate, and share location wish lists of places you want to visit</p>
+                        <h1 class="mb-3 font-bold text-5xl text-center h-40 ">
+                            <Typewriter
+                                options={{
+                                    strings: shuffle(['Got any good recommendations?', 'I should take a note of that restaurant you mentioned!', 'That\'s a cool hiking spot, let me make a note!', 'I should take my S.O there too! Let me pin it :)', 'I\'m hungry! I wonder if any of my pinned restaurants are nearby...', 'Now I\'m here, what were the places I wanted to see in Italy again?', 'I just shared my holiday list with you! Can\'t wait to get to Tenerife!']),
+                                    autoStart: true,
+                                    loop: true,
+                                }}
+                            />
+
+                        </h1>
+                        <div class="border-t w-10/12 mx-auto mb-6"></div>
+                        <p class="pr-3 leading-6 text-center ">Welcome to PinPlace! We are a quick, at-hand app to jot down, sort, organize, annotate, and share location wish lists of places you want to visit</p>
                     </div>
                 </div>
                 <div class="flex justify-center self-center z-10">
