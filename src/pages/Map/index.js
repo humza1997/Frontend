@@ -3,10 +3,10 @@ import './style.css'
 import { NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import Icon from '@mdi/react'
-import { mdiMapMarkerPlus, mdiFilter } from '@mdi/js'
+import { mdiMapMarkerPlus, mdiFilter, mdiNavigation } from '@mdi/js'
 //Map Imports 
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
-import usePlacesAutocomplete, { getGeocode, getLatLng, } from "use-places-autocomplete";
+import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
 import { formatRelative } from "date-fns";
 // import "@reach/combobox/styles.css";
@@ -38,6 +38,10 @@ const Map = () => {
         ]);
     }, []);
 
+    const panTo = React.useCallback(({ lat, lng }) => {
+        mapRef.current.panTo({ lat, lng });
+        mapRef.current.setZoom(20);
+    }, []);
 
     //Google Maps Options
     const mapContainerStyle = {
@@ -92,7 +96,7 @@ const Map = () => {
                                     type="button"
                                 >
                                     <Icon path={mdiMapMarkerPlus}
-                                        title="User Profile"
+                                        title="Add Pin"
                                         size={1}
                                         className="inline md:mb-1 md:mr-1"
                                     /> <span className="hidden md:inline-block"> Add Pin </span>
@@ -113,7 +117,7 @@ const Map = () => {
                                     type="button"
                                 >
                                     <Icon path={mdiFilter}
-                                        title="User Profile"
+                                        title="Filter"
                                         size={1}
                                         className="inline md:mb-1"
                                     /> <span className="hidden md:inline-block"> Filter </span>
@@ -121,9 +125,39 @@ const Map = () => {
 
 
                             </NavLink>
+
+                            <button
+                                className="gradscheme transform transition-all hover:scale-110 active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded-md outline-none focus:outline-none sm:mr-2 mb-1 md:pt-3 md:pr-5 ease-linear transition-all duration-150"
+                                type="button"
+                                onClick={() => {
+                                    navigator.geolocation.getCurrentPosition(
+                                        (position) => {
+                                            panTo({
+                                                lat: position.coords.latitude,
+                                                lng: position.coords.longitude,
+                                            });
+                                        },
+                                        () => null
+                                    );
+                                }}
+                            >
+                                <Icon path={mdiNavigation}
+                                    title="Recentre"
+                                    size={1}
+                                    className="inline md:mb-1 md:mr-1"
+                                /> <span className="hidden md:inline-block"> Recentre </span>
+                            </button>
                         </div>
 
+
+                        <Search panTo={panTo} />
+
+
+
+
                         <div className="border heightcustom shadow-md focus:outline-none focus-within:border-blue-400 transition-all duration-500 bg-center bg-cover">
+
+
                             <GoogleMap
                                 id="map"
                                 mapContainerStyle={mapContainerStyle}
@@ -165,6 +199,12 @@ const Map = () => {
                             </GoogleMap>
                         </div>
 
+                        <div className="mt-4 ">
+
+
+
+
+                        </div>
                     </div>
 
                 </div>
@@ -174,3 +214,63 @@ const Map = () => {
 }
 
 export default Map;
+
+
+
+
+function Search({ panTo }) {
+    const {
+        ready,
+        value,
+        suggestions: { status, data },
+        setValue,
+        clearSuggestions,
+    } = usePlacesAutocomplete({
+        requestOptions: {
+            location: { lat: () => 51.509865, lng: () => -0.118092 }, //Prefer London - Should Change later to user location 
+            radius: 500 * 1000, //500 km Radius of preferneced searches 
+        },
+    });
+
+    // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
+
+    const handleInput = (e) => {
+        setValue(e.target.value);
+    };
+
+    const handleSelect = async (address) => {
+        setValue(address, false);
+        clearSuggestions();
+
+        try {
+            const results = await getGeocode({ address });
+            const { lat, lng } = await getLatLng(results[0]);
+            panTo({ lat, lng });
+            setValue("", false)
+        } catch (error) {
+            console.log("Error: ", error);
+        }
+    };
+
+    return (
+        <div className="">
+            <Combobox onSelect={handleSelect}>
+                <ComboboxInput
+                    className="shadow-sm border rounded-md w-1/2 py-2 px-3 mb-2 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg"
+                    value={value}
+                    onChange={handleInput}
+                    disabled={!ready}
+                    placeholder="Search for Pin"
+                />
+                <ComboboxPopover>
+                    <ComboboxList class="bg-white p-5 rounded-xl max-h-96 overflow-auto mx-auto border leading-7 text-center">
+                        {status === "OK" &&
+                            data.map(({ id, description }) => (
+                                <ComboboxOption key={id} value={description} className="cursor-pointer transform transition-all hover:scale-105 hover:text-purple-500" />
+                            ))}
+                    </ComboboxList>
+                </ComboboxPopover>
+            </Combobox>
+        </div>
+    );
+}
