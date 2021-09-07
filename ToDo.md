@@ -4,10 +4,11 @@
 [x] geoloaction to current place
 [ ] add markers with differnt colours
 [x] Mov API Key
-[ ] View Lists on Map
+[ ] View Lists on Map / Filtering
 
-[ ] Create fake pin data in stroe
-[ ] Drop pins with diff colours of each marker
+[x] Create fake pin data in store
+[x] Drop pins from store on map
+[x] Drop pins with diff colours of each marker
 [ ] Show Pin notes on click
 [ ] Add pin on last searched location
 [ ] Save last pin to the store with a modal for notes anda utofilled name
