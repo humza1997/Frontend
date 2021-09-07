@@ -25,15 +25,15 @@ const Pins = () => {
     };
 
     return (
-        <div class='relative'>
-            <div class='absolute gradscheme inset-0 z-0'></div>
-            <div class='min-h-screen sm:flex sm:flex-row mx-0 justify-center'>
-                <div class='flex-col flex  self-center p-10 sm:max-w-5xl xl:max-w-2xl  z-10'>
-                    <div class='hidden lg:flex flex-col  text-white'></div>
+        <div className='relative'>
+            <div className='absolute gradscheme inset-0 z-0'></div>
+            <div className='min-h-screen sm:flex sm:flex-row mx-0 justify-center'>
+                <div className='flex-col flex  self-center p-10 sm:max-w-5xl xl:max-w-2xl  z-10'>
+                    <div className='hidden lg:flex flex-col  text-white'></div>
                 </div>
-                <div class='flex justify-center self-center z-10'>
-                    <div class='p-12 bg-white mx-auto rounded-3xl w-full '>
-                        <div class='mb-4'>
+                <div className='flex justify-center self-center z-10'>
+                    <div className='p-12 bg-white mx-auto rounded-3xl w-full '>
+                        <div className='mb-4'>
                             <h1>Name:</h1>
                             <p>Padella</p>
                             <br />

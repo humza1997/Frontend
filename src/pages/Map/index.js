@@ -83,11 +83,11 @@ const Map = () => {
 
     return (
         <>
-            <div class="min-w-screen min-h-screen gradscheme flex items-center p-20 overflow-hidden">
-                <div id="mapBox" class="flex-1 rounded-3xl bg-white shadow-xl p-20 lg:p-20 flex items-center text-center ">
+            <div className="min-w-screen min-h-screen gradscheme flex items-center p-20 overflow-hidden">
+                <div id="mapBox" className="flex-1 rounded-3xl bg-white shadow-xl p-20 lg:p-20 flex items-center text-center ">
 
-                    <div class="w-full">
-                        <div class=" mb-5 font-light flex flex-wrap justify-around items-center">
+                    <div className="w-full">
+                        <div className=" mb-5 font-light flex flex-wrap justify-around items-center">
                             <NavLink to="/map/addpin" activeClassName="current">
 
                                 <button
@@ -262,7 +262,7 @@ function Search({ panTo }) {
                     placeholder="Search for Pin"
                 />
                 <ComboboxPopover>
-                    <ComboboxList class="bg-white p-5 rounded-xl max-h-96 overflow-auto mx-auto border leading-7 text-center">
+                    <ComboboxList className="bg-white p-5 rounded-xl max-h-96 overflow-auto mx-auto border leading-7 text-center">
                         {status === "OK" &&
                             data.map(({ id, description }) => (
                                 <ComboboxOption key={id} value={description} className="cursor-pointer transform transition-all hover:scale-105 hover:text-purple-500" />
