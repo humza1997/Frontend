@@ -3,6 +3,7 @@ import './style.css'
 import { NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Modal } from '../../layout';
 import Icon from '@mdi/react'
 import { mdiMapMarkerPlus, mdiFilter, mdiLeadPencil, mdiNavigation } from '@mdi/js'
 //Map Imports 
@@ -25,6 +26,12 @@ const Map = () => {
         mapRef.current = map;
     }, []);
 
+    const [ModalClose, setModalClose] = useState(false);
+
+    const handleModalClose = () => {
+        setModalClose(!ModalClose)
+    }
+
     // Selected Marker Information 
     const [selected, setSelected] = React.useState(null);
 
@@ -38,6 +45,7 @@ const Map = () => {
         //     },
         // ]);
     }, []);
+
 
     const panTo = React.useCallback(({ lat, lng }) => {
         mapRef.current.panTo({ lat, lng });
@@ -98,6 +106,7 @@ const Map = () => {
                                 <button
                                     className="gradscheme transform transition-all hover:scale-110 active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded-md outline-none focus:outline-none sm:mr-2 mb-1 md:pt-3 md:pr-5 ease-linear transition-all duration-150"
                                     type="button"
+                                    onClick={() => handleModalClose()}
                                 >
                                     <Icon path={mdiMapMarkerPlus}
                                         title="Add Pin"
@@ -191,19 +200,19 @@ const Map = () => {
                                         }}
                                     >
                                         <div>
-                                            <h1 className="text-lg underline">
+                                            <h1 className="text-lg" style={{ color: selected.colour }}>
                                                 {selected.name}
                                             </h1>
-                                            <button className=" rounded-xl mx-auto w-auto px-3 py-0.5 text-white" style={{ backgroundColor: selected.colour }}>{selected.tag}</button>
-                                            <p className="border mt-2 rounded-md p-1 px-2 text-left w-64 flex flex-row" style={{
+                                            <button className=" rounded-xl mx-auto my-2 w-auto px-3 py-0.5 text-white" style={{ backgroundColor: selected.colour }}>{selected.tag}</button>
+                                            <p className="border rounded-md p-1 px-2 text-left w-64 flex flex-row" style={{
                                                 borderColor: selected.colour,
                                                 color: selected.colour
                                             }}>
-                                                <div>
+                                                <div className="my-auto py-auto">
                                                     <Icon path={mdiLeadPencil}
                                                         title="Add Pin"
                                                         size={1}
-                                                        className=" mr-1 my-auto"
+                                                        className=" mr-1 m-auto"
                                                         color={selected.colour}
                                                     /></div> <p className="my-auto">{selected.notes}</p>
                                             </p>
@@ -225,6 +234,8 @@ const Map = () => {
 
                 </div>
             </div>
+            <Modal isItOpen={ModalClose} updateOpen={handleModalClose} />
+
         </>
     )
 }
