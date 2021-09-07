@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const ROOT_DIRECTORY = path.join(__dirname, '../'); // the root of your project
@@ -28,6 +29,9 @@ const config = {
       template: path.join(PUBLIC_DIRECTORY, 'index.html'),
       favicon: "src/favicon.svg",
     }),
+    new Dotenv({
+      systemvars: true
+    })
   ],
   module: {
     // helpers we want webpack to use
