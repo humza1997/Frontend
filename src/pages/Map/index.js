@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './style.css'
 import { NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Icon from '@mdi/react'
 import { mdiMapMarkerPlus, mdiFilter, mdiNavigation } from '@mdi/js'
 //Map Imports 
@@ -16,7 +17,8 @@ const libraries = ["places"];
 
 
 const Map = () => {
-    const [markers, setMarkers] = React.useState([{ "lat": 51.95635707559379, "lng": -0.16841113281249598 }, { "lat": 51.73577710870737, "lng": -0.07502734374999598 }, { "lat": 51.671095625555765, "lng": -0.904495117187496 }, { "lat": 51.301673863301666, "lng": 3.083541992187504 }]);
+    const pins = useSelector(state => state.pins.pins)
+    const [markers, setMarkers] = React.useState(pins);
 
     const mapRef = React.useRef() //To retain state withou re renders for search 
     const onMapLoad = React.useCallback((map) => {
@@ -28,13 +30,13 @@ const Map = () => {
 
     //On click 
     const onMapClick = React.useCallback((e) => {
-        setMarkers((current) => [
-            ...current,
-            {
-                lat: e.latLng.lat(),
-                lng: e.latLng.lng(),
-            },
-        ]);
+        // setMarkers((current) => [
+        //     ...current,
+        //     {
+        //         lat: e.latLng.lat(),
+        //         lng: e.latLng.lng(),
+        //     },
+        // ]);
     }, []);
 
     const panTo = React.useCallback(({ lat, lng }) => {
@@ -72,13 +74,16 @@ const Map = () => {
 
 
 
-    let icon = {
-        path: "M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z",
-        fillColor: '#FF0000',
-        fillOpacity: 1,
-        anchor: new google.maps.Point(12, 24),
-        strokeWeight: 0,
-        scale: 1.5
+    let iconRender = (fillcolour) => {
+        return (
+            {
+                path: "M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z",
+                fillColor: fillcolour,
+                fillOpacity: 1,
+                anchor: new google.maps.Point(12, 24),
+                strokeWeight: 0,
+                scale: 1.5
+            })
     }
 
     return (
@@ -170,7 +175,7 @@ const Map = () => {
                                     <Marker
                                         key={`${marker.lat}-${marker.lng}`}
                                         position={{ lat: marker.lat, lng: marker.lng }}
-                                        icon={icon}
+                                        icon={iconRender(marker.colour)}
                                         onClick={() => {
                                             setSelected(marker);
                                         }}
@@ -244,6 +249,7 @@ function Search({ panTo }) {
         try {
             const results = await getGeocode({ address });
             const { lat, lng } = await getLatLng(results[0]);
+            console.log(lat, lng)
             panTo({ lat, lng });
             setValue("", false)
         } catch (error) {
