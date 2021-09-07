@@ -39,9 +39,31 @@ ul a {
 
 #logo {
   fill: #ffffff;
+  border-radius: 10px;
+  transition: fill 0.3s ease-in-out, transform 0.3s ease-in-out,
+    background 0.3s ease-in-out, padding 0.3s ease-in-out,
+    border-radius 0.3s ease-in-out;
 }
 
 #logo:hover {
-  fill: #d9077e;
-  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.1));
+  transform: scale(1.4);
+  fill: #fcb045;
+  background: white;
+  border-radius: 1000px;
+  padding: 3px;
+}
+
+.mdiIcon {
+  border-radius: 10px;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out,
+    background 0.3s ease-in-out, padding 0.3s ease-in-out,
+    border-radius 0.3s ease-in-out;
+}
+
+.mdiIcon:hover {
+  transform: scale(1.5);
+  color: black;
+  background: white;
+  padding: 2px;
+  border-radius: 10px;
 }
