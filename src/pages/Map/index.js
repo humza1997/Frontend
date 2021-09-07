@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Icon from '@mdi/react'
-import { mdiMapMarkerPlus, mdiFilter, mdiNavigation } from '@mdi/js'
+import { mdiMapMarkerPlus, mdiFilter, mdiLeadPencil, mdiNavigation } from '@mdi/js'
 //Map Imports 
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
@@ -191,11 +191,23 @@ const Map = () => {
                                         }}
                                     >
                                         <div>
-                                            <h2>
-                                                Big Man, this is your Pin!
-                                            </h2>
-                                            <p>lat: {selected.lat}</p>
-                                            <p>lng: {selected.lng}</p>
+                                            <h1 className="text-lg underline">
+                                                {selected.name}
+                                            </h1>
+                                            <button className=" rounded-xl mx-auto w-auto px-3 py-0.5 text-white" style={{ backgroundColor: selected.colour }}>{selected.tag}</button>
+                                            <p className="border mt-2 rounded-md p-1 px-2 text-left w-64 flex flex-row" style={{
+                                                borderColor: selected.colour,
+                                                color: selected.colour
+                                            }}>
+                                                <div>
+                                                    <Icon path={mdiLeadPencil}
+                                                        title="Add Pin"
+                                                        size={1}
+                                                        className=" mr-1 my-auto"
+                                                        color={selected.colour}
+                                                    /></div> <p className="my-auto">{selected.notes}</p>
+                                            </p>
+
                                         </div>
                                     </InfoWindow>
                                 ) : null}
