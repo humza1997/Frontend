@@ -127,8 +127,8 @@ const pinsReducer = (state = initState, action) => {
   switch (action.type) {
     case "LOAD_PINS":
       return { ...state, pins: action.payload, error: false };
-    case "ADD_USERNAME":
-      return { ...state, username: action.payload, error: false };
+    case "ADD_PIN":
+      return { ...state, pins: [...state.pins, action.payload], error: false };
     case "RESET":
       return {
         ...state,
@@ -152,3 +152,5 @@ export default pinsReducer;
 // type: "ANSWER_SUBMIT",// payload: "Humza"
 
 // {type: "LOAD_LISTS", payload:[{ name: "London Trip", id: 4,  icon: "fas fa-hiking fa-3x"}, { name: "Restaurants", id: 5,  icon: "fas fa-hiking fa-3x"}]}
+
+//{type: "ADD_PIN", payload:{pin_id: 13, name: "Not the Brecon Beacons", lat: 52.9201989, lng: -4.464187, notes: "to not Hike", tag: "Hiking", colour: "#fb5607", user_id: 1 }}
