@@ -1,13 +1,82 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import './style.css'
 import { NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import Icon from '@mdi/react'
 import { mdiMapMarkerPlus, mdiFilter } from '@mdi/js'
+//Map Imports 
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+import usePlacesAutocomplete, { getGeocode, getLatLng, } from "use-places-autocomplete";
+import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
+import { formatRelative } from "date-fns";
+// import "@reach/combobox/styles.css";
+import mapStyles from "./assets/mapStyles";
+const libraries = ["places"];
+
+
 
 const Map = () => {
+    const [markers, setMarkers] = React.useState([{ "lat": 51.95635707559379, "lng": -0.16841113281249598 }, { "lat": 51.73577710870737, "lng": -0.07502734374999598 }, { "lat": 51.671095625555765, "lng": -0.904495117187496 }, { "lat": 51.301673863301666, "lng": 3.083541992187504 }]);
+
+    const mapRef = React.useRef() //To retain state withou re renders for search 
+    const onMapLoad = React.useCallback((map) => {
+        mapRef.current = map;
+    }, []);
 
 
+    // Selected Marker Information 
+    const [selected, setSelected] = React.useState(null);
+
+    //On click 
+    const onMapClick = React.useCallback((e) => {
+        setMarkers((current) => [
+            ...current,
+            {
+                lat: e.latLng.lat(),
+                lng: e.latLng.lng(),
+            },
+        ]);
+    }, []);
+
+
+    //Google Maps Options
+    const mapContainerStyle = {
+        height: "100%",
+        width: "100%",
+    };
+    const center = {
+        lat: 51.505910,
+        lng: -0.097000,
+    };
+
+    const options = {
+        styles: mapStyles,
+        disableDefaultUI: true,
+        zoomControl: true,
+    };
+
+    //API 
+
+    const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: "",
+        libraries,
+    });
+
+    if (loadError) return "Error Loading Maps";
+    if (!isLoaded) return "Loading...";
+
+    //Markers on CLick 
+
+
+
+    let icon = {
+        path: "M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z",
+        fillColor: '#FF0000',
+        fillOpacity: 1,
+        anchor: new google.maps.Point(12, 24),
+        strokeWeight: 0,
+        scale: 1.5
+    }
 
     return (
         <>
@@ -54,11 +123,46 @@ const Map = () => {
                             </NavLink>
                         </div>
 
-                        <div className="border heightcustom shadow-md rounded-3xl focus:outline-none focus-within:border-purple-400 transition-all duration-500 bg-center bg-cover"
-                            style={{
-                                backgroundImage:
-                                    "url('https://images.unsplash.com/photo-1478860409698-8707f313ee8b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80')",
-                            }}>
+                        <div className="border heightcustom shadow-md focus:outline-none focus-within:border-blue-400 transition-all duration-500 bg-center bg-cover">
+                            <GoogleMap
+                                id="map"
+                                mapContainerStyle={mapContainerStyle}
+                                zoom={8}
+                                center={center}
+                                options={options}
+                                onClick={onMapClick}
+                                onLoad={onMapLoad}
+                            >
+                                {markers.map((marker) => (
+                                    <Marker
+                                        key={`${marker.lat}-${marker.lng}`}
+                                        position={{ lat: marker.lat, lng: marker.lng }}
+                                        icon={icon}
+                                        onClick={() => {
+                                            setSelected(marker);
+                                        }}
+
+                                    />
+                                ))}
+
+                                {selected ? (
+                                    <InfoWindow
+                                        position={{ lat: selected.lat, lng: selected.lng }}
+                                        onCloseClick={() => {
+                                            setSelected(null);
+                                        }}
+                                    >
+                                        <div>
+                                            <h2>
+                                                Big Man, this is your Pin!
+                                            </h2>
+                                            <p>lat: {selected.lat}</p>
+                                            <p>lng: {selected.lng}</p>
+                                        </div>
+                                    </InfoWindow>
+                                ) : null}
+
+                            </GoogleMap>
                         </div>
 
                     </div>
