@@ -9,6 +9,12 @@ export const addUsername = (username) => ({
     payload: username,
 });
 
+export const addPin = (pin) => ({
+    type: "ADD_PIN",
+    payload: pin,
+});
+
+
 export const resetState = () => ({
     type: "RESET",
     payload: [0, " ", 0],
