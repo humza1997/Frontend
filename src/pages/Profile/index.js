@@ -131,19 +131,15 @@ const Profile = () => {
                                         Humza Muzammal
                                     </h3>
                                     <div className="text-sm leading-normal mt-0 mb-2 font-bold uppercase">
-                                        <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>{" "}
-                                        <Icon path={mdiMapMarker}
-                                            title="User Profile"
-                                            size={1}
-                                            className="inline mb-1"
-                                        /> London, United Kingdom
+                                        <i className="fas fa-map-marker-alt mr-2 text-lg "></i>{" "}
+                                        London, United Kingdom
                                     </div>
                                     <div className="mb-2  mt-10">
-                                        <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+                                        <i className="fas fa-briefcase mr-2 text-lg "></i>
                                         CEO at The Wings Are Good Here
                                     </div>
                                     <div className="mb-2 ">
-                                        <i className="fas fa-university mr-2 text-lg text-blueGray-400"></i>
+                                        <i className="fas fa-university mr-2 text-lg "></i>
                                         Wing connoisseur, Hiker and all-around Foodie
                                     </div>
                                 </div>
