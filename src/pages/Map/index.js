@@ -23,7 +23,6 @@ const Map = () => {
         mapRef.current = map;
     }, []);
 
-
     // Selected Marker Information 
     const [selected, setSelected] = React.useState(null);
 
@@ -62,7 +61,7 @@ const Map = () => {
     //API 
 
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: "",
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries,
     });
 
