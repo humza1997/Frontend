@@ -10,6 +10,7 @@ export const store = createStore(
         pins: pinsReducer,
     }),
     composeWithDevTools(applyMiddleware(thunk))
+
 );
 
 // const store = createStore(listReducer, composeWithDevTools(applyMiddleware(thunk)));

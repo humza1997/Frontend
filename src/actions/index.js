@@ -1,18 +1,4 @@
-import axios from 'axios';
-export const addList = (list) => ({
-    type: "ADD_LIST",
-    payload: list,
-});
-
-export const addUsername = (username) => ({
-    type: "ADD_USERNAME",
-    payload: username,
-});
-
-export const resetState = () => ({
-    type: "RESET",
-    payload: [0, " ", 0],
-});
+import axios from "axios";
 
 // export const loadList = (id) => {
 //   return async (dispatch) => {
@@ -31,7 +17,23 @@ export const resetState = () => ({
 //       });
 //     }
 //   };
-// };  
+
+// };
+
+export const addList = (list) => ({
+  type: "ADD_LIST",
+  payload: list,
+});
+
+export const addUsername = (username) => ({
+  type: "ADD_USERNAME",
+  payload: username,
+});
+
+export const resetState = () => ({
+  type: "RESET",
+  payload: [0, " ", 0],
+});
 
 
 //Helper Shuffle function:
@@ -45,3 +47,4 @@ export const shuffle = (arr) => {
     }
     return arr;
 };
+

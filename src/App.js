@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Home, Pins, List, Map, Share, Profile, Error404, ListIndex, PinsIndex } from './pages';
 import { Header, Modal } from './layout';
@@ -36,6 +37,7 @@ function App() {
 
         </>
     )
+
 }
 
 export default App;
