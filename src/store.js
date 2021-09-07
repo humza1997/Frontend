@@ -1,8 +1,18 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools, devToolsEnhancer } from "redux-devtools-extension";
+import listReducer from "./reducers/listsReducer";
+import pinsReducer from "./reducers/pinsReducer";
 
-import Reducer from './reducers/Reducer'
-const store = createStore(Reducer, composeWithDevTools(applyMiddleware(thunk)))
+export const store = createStore(
+    combineReducers({
+        list: listReducer,
+        pins: pinsReducer,
+    }),
+    composeWithDevTools(applyMiddleware(thunk))
+);
+
+// const store = createStore(listReducer, composeWithDevTools(applyMiddleware(thunk)));
+// const store = createStore(pinsReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 export default store;
