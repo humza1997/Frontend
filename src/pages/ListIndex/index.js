@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
 import { NavLink } from "react-router-dom";
+import { ListCard, AddButton } from "../../components";
 
-const Pins = () => {
+const ListIndex = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -24,6 +25,13 @@ const Pins = () => {
       .catch(console.warn);
   };
 
+  const [list, setlist] = useState([
+    { id: 1, name: "Restaurants", icon: "fas fa-hiking fa-3x" },
+    { id: 2, name: "Hiking Routes", icon: "fas fa-utensils fa-3x" },
+    { id: 3, name: "Italy Trip", icon: "fas fa-hiking fa-3x" },
+  ]);
+
+  const renderLists = () => list.map((x) => <ListCard key={x.id} id={x.id} name={x.name} iconClass={x.icon} />);
   return (
     <div class='relative'>
       <div class='absolute gradscheme inset-0 z-0'></div>
@@ -34,16 +42,12 @@ const Pins = () => {
         <div class='flex justify-center self-center z-10'>
           <div class='p-12 bg-white mx-auto rounded-3xl w-full '>
             <div class='mb-4'>
-              <h1>Name:</h1>
-              <p>Padella</p>
-              <br />
-              <h1>Location:</h1>
-              <p>Via della Paglia, 00153 Roma RM</p>
-              <br />
-              <h1>Tags:</h1>
-              <p>Italian Restaurant</p>
-              <br />
-              <h2>View On Map</h2>
+              <h3 class='text-center font-semibold text-2xl text-gray-800'>Lists</h3>
+              <p class='text-center text-gray-500 mt-3'>Please sign in to use PinPlace</p>
+              {renderLists()}
+              <div className='text-center'>
+                <AddButton />
+              </div>
             </div>
           </div>
         </div>
@@ -52,4 +56,4 @@ const Pins = () => {
   );
 };
 
-export default Pins;
+export default ListIndex;

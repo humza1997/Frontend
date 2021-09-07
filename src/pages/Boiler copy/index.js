@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import './style.css'
 import { NavLink } from 'react-router-dom';
 
-const Lists = () => {
+const Pins = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,9 +27,9 @@ const Lists = () => {
 
     return (
         <>
-            Lists
+            Shav
         </>
     )
 }
 
-export default Lists;
+export default Pins;

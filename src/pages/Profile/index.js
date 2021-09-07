@@ -1,9 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './style.css'
 import { NavLink } from 'react-router-dom';
-import { Switch, Route } from 'react-router-dom';
-import Icon from '@mdi/react'
-import { mdiMapMarker } from '@mdi/js'
 
 const Profile = () => {
 
@@ -29,7 +26,7 @@ const Profile = () => {
     };
 
     return (
-        <>
+   
             <main>
                 <section className="relative block h-1/2 ">
                     <div id="profile-background"
@@ -305,7 +302,8 @@ const Profile = () => {
                     </div>
                 </section>
             </main>
-        </>
+
+        
     )
 }
 

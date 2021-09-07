@@ -17,3 +17,6 @@
   background-attachment: fixed;
   background-size: cover;
 }
+h2 {
+  margin: 0;
+}
