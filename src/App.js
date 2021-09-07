@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Home, Pins, Lists, Map, Share, Profile, Error404 } from './pages';
+import { Home, Pins, List, Map, Share, Profile, Error404, ListIndex, PinsIndex } from './pages';
 import { Header, Modal } from './layout';
 import './styles/app.css';
 import { Switch, Route } from 'react-router-dom';
@@ -23,8 +23,10 @@ function App() {
             <Switch>
                 <Route exact path="/" ><Home /> </Route>
                 <Route exact path="/register" ><Home /> </Route>
-                <Route path="/pins" ><Pins /></Route>
-                <Route path="/lists" ><Lists /></Route>
+                <Route path='/pin'> <Pins /> </Route>
+                <Route path='/pins'> <PinsIndex /> </Route>
+                <Route path='/lists'> <ListIndex /> </Route>
+                <Route path='/list'> <List /> </Route>
                 <Route path="/map" ><Map /></Route>
                 <Route path="/share" ><Share /></Route>
                 <Route path="/profile" ><Profile /></Route>
