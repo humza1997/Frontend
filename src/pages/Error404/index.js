@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './style.css'
 import { NavLink } from 'react-router-dom';
-import error404 from '../../Error404.svg'
+import error404 from '../../error404.svg'
 import Icon from '@mdi/react'
 import { mdiArrowLeft } from '@mdi/js'
 
