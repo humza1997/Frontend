@@ -19,6 +19,11 @@ export const setForm = (form) => ({
   payload: form,
 });
 
+export const setRecent = (recent) => ({
+  type: "SET_RECENT",
+  payload: recent,
+});
+
 
 export const resetState = () => ({
   type: "RESET",

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Modal } from '../../layout';
-import { setForm } from '../../actions';
+import { setForm, setRecent } from '../../actions';
 import Icon from '@mdi/react'
 import { mdiMapMarkerPlus, mdiFilter, mdiLeadPencil, mdiNavigation } from '@mdi/js'
 //Map Imports 
@@ -19,9 +19,11 @@ import { useHistory } from "react-router-dom";
 const libraries = ["places"];
 
 const Map = () => {
+    const dispatch = useDispatch();
     let history = useHistory();
     const pins = useSelector(state => state.pins.pins)
     const form = useSelector(state => state.form.form)
+    const recent = useSelector(state => state.form.recent)
     const [markers, setMarkers] = React.useState(pins);
     useEffect(() => {
         // console.log("updated store");
@@ -70,10 +72,7 @@ const Map = () => {
         height: "100%",
         width: "100%",
     };
-    const center = {
-        lat: 51.505910,
-        lng: -0.097000,
-    };
+    const center = recent;
 
     const options = {
         styles: mapStyles,

@@ -14,10 +14,10 @@
 [x] Create action creator for Pin creation
 [x] create modal
 [x] autofill modal location from last search
-[ ] call action when modal is submitted
-[ ] Add pin on last searched location
-[ ] Save last pin to the store with a modal for notes anda utofilled name
-[ ] re ender all pins
+[x] call action when modal is submitted
+[x] Add pin on last searched location
+[x] Save last pin to the store with a modal for notes anda utofilled name
+[x] re ender all pins
 [ ] add pin on click and add information and save it to the store
 
 ## Map To Do

@@ -4,6 +4,10 @@ const initState = {
     "name": "Wembley Stadium, London, UK",
     "lat": 51.55602469999999,
     "lng": -0.2796177
+  },
+  recent: {
+    lat: 52.075004,
+    lng: -1.650028,
   }
 };
 
@@ -11,6 +15,8 @@ const formReducer = (state = initState, action) => {
   switch (action.type) {
     case "SET_FORM":
       return { ...state, form: action.payload, error: false };
+    case "SET_RECENT":
+      return { ...state, recent: action.payload, error: false };
     case "RESET":
       return {
         ...state,
