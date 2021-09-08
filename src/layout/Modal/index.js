@@ -91,13 +91,13 @@ const Modal = (props) => {
 
                                 <div className="space-y-2">
                                     <label htmlFor="Notes" className="text-sm font-medium  tracking-wide">Notes: </label>
-                                    <input className=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="Notes" name="Notes" type="text" defaultValue="A note is here"></input>
+                                    <input className=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="Notes" name="Notes" type="text"></input>
                                 </div>
 
                                 <div className="flex items-center justify-around">
                                     <div className="w-full mr-3">
                                         <label htmlFor="tag" className="text-sm font-medium  tracking-wide">Tag: </label>
-                                        <input className=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="Tag" name="tag" type="text" defaultValue="Food"></input>
+                                        <input className=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="Tag" name="tag" type="text"></input>
                                     </div>
 
 
