@@ -26,7 +26,7 @@ const Map = () => {
         mapRef.current = map;
     }, []);
 
-    const [ModalClose, setModalClose] = useState(false);
+    const [ModalClose, setModalClose] = useState(true);
 
     const handleModalClose = () => {
         setModalClose(!ModalClose)
