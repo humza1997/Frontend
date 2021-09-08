@@ -1,9 +1,9 @@
 const initState = {
   loading: false,
   form: {
-    "name": "Wembley Stadium, London, UK",
-    "lat": 51.55602469999999,
-    "lng": -0.2796177
+    "name": "",
+    "lat": 0,
+    "lng": 0
   },
   recent: {
     lat: 52.075004,
