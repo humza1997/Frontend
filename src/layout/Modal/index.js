@@ -1,21 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 const Modal = (props) => {
     return (
-        <div className={props.isItOpen ? 'hidden' : 'font-light fixed w-full h-100 inset-0 overflow-hidden flex justify-center items-center'} class="font-light fixed w-full h-100 inset-0 overflow-hidden flex justify-center items-center"
+        <div className={props.isItOpen ? 'hidden' : 'font-light fixed w-full h-100 inset-0 overflow-hidden flex justify-center items-center'}
             style={{ background: "rgba(0,0,0,.7)" }}>
 
 
             <div className="p-12 bg-white mx-auto rounded-3xl w-3/4 lg:w-1/2 h-auto ">
 
 
-                <div class="container-content ">
+                <div className="container-content ">
 
-                    <div class="flex justify-end items-center pb-1">
+                    <div className="flex justify-end items-center pb-1">
 
-                        <div class="modal-close cursor-pointer  transform transition-all hover:scale-110" onClick={() => props.updateOpen()}>
-                            <svg class="mb-1" width="18" height="18"
+                        <div className="modal-close cursor-pointer  transform transition-all hover:scale-110" onClick={() => props.updateOpen()}>
+                            <svg className="mb-1" width="18" height="18"
                                 viewBox="0 0 18 18">
                                 <path
                                     d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
@@ -64,7 +63,7 @@ const Modal = (props) => {
                             </div>
 
 
-                            <div class="flex flex-col items-center">
+                            <div className="flex flex-col items-center">
                                 <input className=" mt-6 text-white transform transition-all hover:scale-105 cursor-pointer gradscheme rounded-full focus:bg-purple-700 w-auto px-28 font-bold text-lg mx-auto p-2 " name="submit" type="submit" value="Add Pin" />
                             </div>
                         </div>
