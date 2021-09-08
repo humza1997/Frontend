@@ -14,6 +14,11 @@ export const addPin = (pin) => ({
   payload: pin,
 });
 
+export const setForm = (form) => ({
+  type: "SET_FORM",
+  payload: form,
+});
+
 
 export const resetState = () => ({
   type: "RESET",
