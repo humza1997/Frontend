@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import './style.css'
 import { NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Modal } from '../../layout';
+import { setForm } from '../../actions';
 import Icon from '@mdi/react'
 import { mdiMapMarkerPlus, mdiFilter, mdiLeadPencil, mdiNavigation } from '@mdi/js'
 //Map Imports 
@@ -13,23 +14,35 @@ import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption 
 import { formatRelative } from "date-fns";
 // import "@reach/combobox/styles.css";
 import mapStyles from "./assets/mapStyles";
+import { useHistory } from "react-router-dom";
+
 const libraries = ["places"];
 
-let form = {}
-
 const Map = () => {
+    let history = useHistory();
     const pins = useSelector(state => state.pins.pins)
+    const form = useSelector(state => state.form.form)
     const [markers, setMarkers] = React.useState(pins);
+    useEffect(() => {
+        // console.log("updated store");
+        setMarkers(pins)
+    }, [pins]);
+
+
+
+
+    let fetchState = () => {
+        const pins = useSelector(state => state.pins.pins)
+        console.log(pins)
+    }
 
     const mapRef = React.useRef() //To retain state withou re renders for search 
     const onMapLoad = React.useCallback((map) => {
         mapRef.current = map;
     }, []);
 
-    const [ModalClose, setModalClose] = useState(true);
-
     const handleModalClose = () => {
-        setModalClose(!ModalClose)
+        history.push('/map')
     }
 
     // Selected Marker Information 
@@ -128,6 +141,7 @@ const Map = () => {
                                 <button
                                     className="gradscheme transform transition-all hover:scale-110 active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded-md outline-none focus:outline-none sm:mr-2 mb-1 md:pt-3 md:pr-5 ease-linear transition-all duration-150"
                                     type="button"
+                                    onClick={fetchState}
                                 >
                                     <Icon path={mdiFilter}
                                         title="Filter"
@@ -184,7 +198,15 @@ const Map = () => {
                                     <Marker
 
                                         key={`${marker.lat}-${marker.lng}`}
-                                        position={{ lat: marker.lat, lng: marker.lng }}
+                                        position={{
+
+
+                                            lat: parseFloat(marker.lat),
+                                            lng: parseFloat(marker.lng)
+
+
+
+                                        }}
                                         icon={iconRender(marker.colour)}
                                         onClick={() => {
                                             setSelected(marker);
@@ -235,7 +257,7 @@ const Map = () => {
 
                 </div>
             </div>
-            <Modal isItOpen={ModalClose} updateOpen={handleModalClose} name={form.name} lat={form.lat} lng={form.lng} />
+            <Modal updateOpen={handleModalClose} name={form.name} lat={form.lat} lng={form.lng} />
 
         </>
     )
@@ -247,6 +269,7 @@ export default Map;
 
 
 function Search({ panTo }) {
+    const dispatch = useDispatch();
     const {
         ready,
         value,
@@ -267,6 +290,7 @@ function Search({ panTo }) {
     };
 
     const handleSelect = async (address) => {
+        let form = {}
         form.name = address
         setValue(address, false);
         clearSuggestions();
@@ -275,6 +299,8 @@ function Search({ panTo }) {
             const { lat, lng } = await getLatLng(results[0]);
             form.lat = lat
             form.lng = lng
+            console.log(form)
+            dispatch(setForm(form))
             panTo({ lat, lng });
             setValue("", false)
         } catch (error) {
