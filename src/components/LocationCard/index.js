@@ -30,7 +30,7 @@ const ListCard = ({ name, id, iconClass, border }) => {
         <div className='flex flex-row justify-between mt-3 mb-2'>
           <h1>{name}</h1>
           <p className='hidden'>{id}</p>
-          <i class={iconClass}></i>
+          <i className={iconClass}></i>
         </div>
       </div>
     </NavLink>

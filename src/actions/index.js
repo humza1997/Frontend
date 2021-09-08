@@ -1,4 +1,24 @@
-import axios from "axios";
+import axios from 'axios';
+export const addList = (list) => ({
+  type: "ADD_LIST",
+  payload: list,
+});
+
+export const addUsername = (username) => ({
+  type: "ADD_USERNAME",
+  payload: username,
+});
+
+export const addPin = (pin) => ({
+  type: "ADD_PIN",
+  payload: pin,
+});
+
+
+export const resetState = () => ({
+  type: "RESET",
+  payload: [0, " ", 0],
+});
 
 // export const loadList = (id) => {
 //   return async (dispatch) => {
@@ -38,13 +58,13 @@ export const resetState = () => ({
 
 //Helper Shuffle function:
 export const shuffle = (arr) => {
-    let c = arr.length;
-    let rand;
-    while (c !== 0) {
-        rand = Math.floor(Math.random() * c);
-        c--;
-        [arr[c], arr[rand]] = [arr[rand], arr[c]];
-    }
-    return arr;
+  let c = arr.length;
+  let rand;
+  while (c !== 0) {
+    rand = Math.floor(Math.random() * c);
+    c--;
+    [arr[c], arr[rand]] = [arr[rand], arr[c]];
+  }
+  return arr;
 };
 
