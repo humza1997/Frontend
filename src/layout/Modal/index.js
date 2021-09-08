@@ -29,18 +29,18 @@ const Modal = (props) => {
                         <div className="space-y-5">
                             <div className="space-y-2">
                                 <label htmlFor="name" className="text-sm font-medium  tracking-wide">Name: </label>
-                                <input className=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="Pin name" name="name" type="text"></input>
+                                <input className=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="Pin name" name="name" type="text" defaultValue={props.name}></input>
                             </div>
                             <div className="flex items-center justify-around">
                                 <div className="w-full mr-3">
                                     <label htmlFor="Latitude" className="text-sm font-medium  tracking-wide">Latitude: </label>
-                                    <input className=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="Latitude" name="Latitude" type="text"></input>
+                                    <input className=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="Latitude" name="Latitude" type="text" defaultValue={props.lat}></input>
                                 </div>
 
 
                                 <div className="w-full ml-3">
                                     <label htmlFor="Longitude" className="text-sm font-medium  tracking-wide">Longitude: </label>
-                                    <input className=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="Longitude" name="Longitude" type="text"></input>
+                                    <input className=" shadow-sm border rounded-md w-full py-2 px-3  mt-1 leading-tight  outline-none focus:outline-none focus-within:border-purple-400 transition-all duration-500 text-base rounded-lg" placeholder="Longitude" name="Longitude" type="text" defaultValue={props.lng}></input>
                                 </div>
                             </div>
 

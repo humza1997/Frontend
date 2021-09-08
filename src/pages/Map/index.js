@@ -15,7 +15,7 @@ import { formatRelative } from "date-fns";
 import mapStyles from "./assets/mapStyles";
 const libraries = ["places"];
 
-
+let form = {}
 
 const Map = () => {
     const pins = useSelector(state => state.pins.pins)
@@ -182,6 +182,7 @@ const Map = () => {
                             >
                                 {markers.map((marker) => (
                                     <Marker
+
                                         key={`${marker.lat}-${marker.lng}`}
                                         position={{ lat: marker.lat, lng: marker.lng }}
                                         icon={iconRender(marker.colour)}
@@ -234,7 +235,7 @@ const Map = () => {
 
                 </div>
             </div>
-            <Modal isItOpen={ModalClose} updateOpen={handleModalClose} />
+            <Modal isItOpen={ModalClose} updateOpen={handleModalClose} name={form.name} lat={form.lat} lng={form.lng} />
 
         </>
     )
@@ -266,13 +267,14 @@ function Search({ panTo }) {
     };
 
     const handleSelect = async (address) => {
+        form.name = address
         setValue(address, false);
         clearSuggestions();
-
         try {
             const results = await getGeocode({ address });
             const { lat, lng } = await getLatLng(results[0]);
-            console.log(lat, lng)
+            form.lat = lat
+            form.lng = lng
             panTo({ lat, lng });
             setValue("", false)
         } catch (error) {
