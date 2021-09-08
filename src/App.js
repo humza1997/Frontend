@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
 import { Home, Pins, List, Map, Share, Profile, Error404, ListIndex, PinsIndex } from './pages';
 import { Header, Modal } from './layout';
+import './styles/tailwind.css';
 import './styles/app.css';
 import { Switch, Route } from 'react-router-dom';
 
@@ -37,7 +37,6 @@ function App() {
 
         </>
     )
-
 }
 
 export default App;

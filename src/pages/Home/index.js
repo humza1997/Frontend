@@ -131,16 +131,10 @@ const Home = () => {
                                         Already have an account? Log in
                                         <NavLink to="/" activeClassName="current" className="text-purple-400 hover:text-purple-500 hover:underline"> here.</NavLink></span>
                                 </div>
-                                <div>
-                                    <input class=" text-white gradscheme rounded-full focus:bg-purple-700 w-full px-28 font-bold text-lg mx-auto p-2 " name="submit" type="submit" value="Sign in" />
-                                </div>
-                            </div>
-                        </form>
-                        <div class="pt-5 text-center text-gray-400 text-xs">
-                            <span>
-                                Don't have an account? Sign up
-                                <a href="#" class="text-purple-400 hover:text-purple-500 hover:underline"> here.</a></span>
-                        </div>
+                            </Route>
+                        </Switch>
+
+
                     </div>
                 </div>
             </div>
