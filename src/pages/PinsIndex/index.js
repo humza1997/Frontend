@@ -2,37 +2,19 @@ import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
 import { NavLink } from "react-router-dom";
 import { LocationCard, AddButton } from "../../components";
+import { useSelector, connect } from "react-redux";
 
 const PinsIndex = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const pinIndex = useSelector((state) => state.pins);
+  console.log(pinIndex.pins);
 
-    const postData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      password: e.target.messageShav.value,
-    };
-
-    const options = {
-      method: "POST",
-      body: JSON.stringify(postData),
-      headers: { "Content-Type": "application/json" },
-    };
-
-    fetch("/api/*", options)
-      .then((r) => r.json())
-      .then(() => e.target.reset())
-      .catch(console.warn);
-  };
-
-  const [list, setlist] = useState([
-    { id: 1, name: "Padella", icon: "fas fa-utensils fa-3x", border: "border-red-500" },
-    { id: 2, name: "Mama Mia", icon: "fas fa-utensils fa-3x", border: "border-red-500" },
-    { id: 3, name: "Mount Visuvious", icon: "fas fa-hiking fa-3x", border: "border-blue-500" },
-  ]);
+  // console.log(this.props);
 
   const renderLocation = () =>
-    list.map((x) => <LocationCard key={x.id} id={x.id} name={x.name} iconClass={x.icon} border={x.border} />);
+    pinIndex.pins.map((x) => (
+      <LocationCard key={x.id} id={x.pin_id} name={x.name} iconClass={x.thumb} border={x.colour} />
+    ));
+
   return (
     <div className='relative'>
       <div className='absolute gradscheme inset-0 z-0'></div>
