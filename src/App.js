@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Home, Pins, List, Map, Share, Profile, ListIndex, PinsIndex } from "./pages";
 import { Header, Modal } from "./layout";
+import "./styles/tailwind.css";
 import "./styles/app.css";
 import { Switch, Route } from "react-router-dom";
 
@@ -22,16 +23,16 @@ function App() {
         <Route exact path='/'>
           <Home />
         </Route>
-        <Route path='/pin'>
-          <Pins />
-        </Route>
-        <Route path='/pins'>
+        <Route exact path='/pins'>
           <PinsIndex />
         </Route>
-        <Route path='/lists'>
+        <Route path='/pins/:id'>
+          <Pins />
+        </Route>
+        <Route exact path='/lists'>
           <ListIndex />
         </Route>
-        <Route path='/list'>
+        <Route path='/lists/:id'>
           <List />
         </Route>
         <Route path='/map'>

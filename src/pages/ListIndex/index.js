@@ -2,36 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
 import { NavLink } from "react-router-dom";
 import { ListCard, AddButton } from "../../components";
+import { useSelector, connect } from "react-redux";
 
 const ListIndex = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [list, setlist] = useState([]);
 
-    const postData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      password: e.target.messageShav.value,
-    };
+  const listIndex = useSelector((state) => state.list);
+  console.log(listIndex);
 
-    const options = {
-      method: "POST",
-      body: JSON.stringify(postData),
-      headers: { "Content-Type": "application/json" },
-    };
-
-    fetch("/api/*", options)
-      .then((r) => r.json())
-      .then(() => e.target.reset())
-      .catch(console.warn);
-  };
-
-  const [list, setlist] = useState([
-    { id: 1, name: "Restaurants", icon: "fas fa-hiking fa-3x" },
-    { id: 2, name: "Hiking Routes", icon: "fas fa-utensils fa-3x" },
-    { id: 3, name: "Italy Trip", icon: "fas fa-hiking fa-3x" },
-  ]);
-
-  const renderLists = () => list.map((x) => <ListCard key={x.id} id={x.id} name={x.name} iconClass={x.icon} />);
+  const renderLists = () =>
+    listIndex.result.map((x) => <ListCard key={x.id} id={x.id} name={x.name} iconClass={x.thumb} border={x.colour} />);
   return (
     <div class='relative'>
       <div class='absolute gradscheme inset-0 z-0'></div>
