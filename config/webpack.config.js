@@ -40,7 +40,7 @@ const config = {
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }, // transpile JavaScript files
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       }, // transpile css files
       {
         test: /\.(png|svg|jpg|gif|pdf)$/,
