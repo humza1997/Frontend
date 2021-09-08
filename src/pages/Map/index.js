@@ -26,7 +26,6 @@ const Map = () => {
     const recent = useSelector(state => state.form.recent)
     const [markers, setMarkers] = React.useState(pins);
     useEffect(() => {
-        // console.log("updated store");
         setMarkers(pins)
     }, [pins]);
 
@@ -216,17 +215,17 @@ const Map = () => {
 
                                 {selected ? (
                                     <InfoWindow
-                                        position={{ lat: selected.lat, lng: selected.lng }}
+                                        position={{ lat: parseFloat(selected.lat), lng: parseFloat(selected.lng) }}
                                         onCloseClick={() => {
                                             setSelected(null);
                                         }}
                                     >
-                                        <div>
+                                        <div className="w-64">
                                             <h1 className="text-lg" style={{ color: selected.colour }}>
                                                 {selected.name}
                                             </h1>
                                             <button className=" rounded-xl mx-auto my-2 w-auto px-3 py-0.5 text-white" style={{ backgroundColor: selected.colour }}>{selected.tag}</button>
-                                            <p className="border rounded-md p-1 px-2 text-left w-64 flex flex-row" style={{
+                                            <div className="border rounded-md p-1 px-2 text-left w-full flex flex-row" style={{
                                                 borderColor: selected.colour,
                                                 color: selected.colour
                                             }}>
@@ -237,7 +236,7 @@ const Map = () => {
                                                         className=" mr-1 m-auto"
                                                         color={selected.colour}
                                                     /></div> <p className="my-auto">{selected.notes}</p>
-                                            </p>
+                                            </div>
 
                                         </div>
                                     </InfoWindow>
@@ -298,7 +297,6 @@ function Search({ panTo }) {
             const { lat, lng } = await getLatLng(results[0]);
             form.lat = lat
             form.lng = lng
-            console.log(form)
             dispatch(setForm(form))
             panTo({ lat, lng });
             setValue("", false)
