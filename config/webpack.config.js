@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const ROOT_DIRECTORY = path.join(__dirname, '../'); // the root of your project
@@ -28,6 +29,9 @@ const config = {
       template: path.join(PUBLIC_DIRECTORY, 'index.html'),
       favicon: "src/favicon.svg",
     }),
+    new Dotenv({
+      systemvars: true
+    })
   ],
   module: {
     // helpers we want webpack to use
@@ -36,7 +40,7 @@ const config = {
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }, // transpile JavaScript files
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       }, // transpile css files
       {
         test: /\.(png|svg|jpg|gif|pdf)$/,

@@ -1,17 +1,33 @@
 import axios from 'axios';
 export const addList = (list) => ({
-    type: "ADD_LIST",
-    payload: list,
+  type: "ADD_LIST",
+  payload: list,
 });
 
 export const addUsername = (username) => ({
-    type: "ADD_USERNAME",
-    payload: username,
+  type: "ADD_USERNAME",
+  payload: username,
 });
 
+export const addPin = (pin) => ({
+  type: "ADD_PIN",
+  payload: pin,
+});
+
+export const setForm = (form) => ({
+  type: "SET_FORM",
+  payload: form,
+});
+
+export const setRecent = (recent) => ({
+  type: "SET_RECENT",
+  payload: recent,
+});
+
+
 export const resetState = () => ({
-    type: "RESET",
-    payload: [0, " ", 0],
+  type: "RESET",
+  payload: [0, " ", 0],
 });
 
 // export const loadList = (id) => {
@@ -31,17 +47,18 @@ export const resetState = () => ({
 //       });
 //     }
 //   };
-// };  
 
+// };
 
 //Helper Shuffle function:
 export const shuffle = (arr) => {
-    let c = arr.length;
-    let rand;
-    while (c !== 0) {
-        rand = Math.floor(Math.random() * c);
-        c--;
-        [arr[c], arr[rand]] = [arr[rand], arr[c]];
-    }
-    return arr;
+  let c = arr.length;
+  let rand;
+  while (c !== 0) {
+    rand = Math.floor(Math.random() * c);
+    c--;
+    [arr[c], arr[rand]] = [arr[rand], arr[c]];
+  }
+  return arr;
 };
+

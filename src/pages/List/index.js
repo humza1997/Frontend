@@ -1,49 +1,46 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
-import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { LocationCard, AddButton } from "../../components";
+import { useSelector, connect } from "react-redux";
+import { ListIndex } from "..";
 
-const List = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const List = (props) => {
+  let name = props.match.params.id;
 
-    const postData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      password: e.target.messageShav.value,
-    };
+  const listIndex = useSelector((state) => state.list);
+  // console.log(listIndex.result);
+  // console.log(listIndex.result[name - 1]);
 
-    const options = {
-      method: "POST",
-      body: JSON.stringify(postData),
-      headers: { "Content-Type": "application/json" },
-    };
+  let list1 = listIndex.result[name - 1].list_pins;
+  let listTitle = listIndex.result[name - 1].name;
 
-    fetch("/api/*", options)
-      .then((r) => r.json())
-      .then(() => e.target.reset())
-      .catch(console.warn);
-  };
+  // console.log(list1);
 
-  const [list, setlist] = useState([
-    { id: 1, name: "Padella", icon: "fas fa-utensils fa-3x", border: "border-red-500" },
-    { id: 2, name: "Mama Mia", icon: "fas fa-utensils fa-3x", border: "border-red-500" },
-    { id: 3, name: "Mount Visuvious", icon: "fas fa-hiking fa-3x", border: "border-blue-500" },
-  ]);
+  const pins = useSelector((state) => state.pins);
+
+  console.log(pins.pins);
+
+  let pinsList = list1.map((p) => pins.pins.filter((pin) => pin.pin_id === p));
+
+  console.log(pinsList);
 
   const renderLocation = () =>
-    list.map((x) => <LocationCard key={x.id} id={x.id} name={x.name} iconClass={x.icon} border={x.border} />);
+    pinsList.map((x) => (
+      <LocationCard key={x[0].id} id={x[0].pin_id} name={x[0].name} iconClass={x[0].thumb} border={x[0].colour} />
+    ));
+
   return (
-    <div class='relative'>
-      <div class='absolute gradscheme inset-0 z-0'></div>
-      <div class='min-h-screen sm:flex sm:flex-row mx-0 justify-center'>
-        <div class='flex-col flex  self-center p-10 sm:max-w-5xl xl:max-w-2xl  z-10'>
-          <div class='hidden lg:flex flex-col  text-white'></div>
+    <div className='relative'>
+      <div className='absolute gradscheme inset-0 z-0'></div>
+      <div className='min-h-screen sm:flex sm:flex-row mx-0 justify-center'>
+        <div className='flex-col flex  self-center p-10 sm:max-w-5xl xl:max-w-2xl  z-10'>
+          <div className='hidden lg:flex flex-col  text-white'></div>
         </div>
         <div class='flex justify-center self-center z-10'>
           <div class='p-12 bg-white mx-auto rounded-3xl w-full '>
             <div class='mb-4'>
-              <h3 class='text-center font-semibold text-2xl text-gray-800'>Lists</h3>
+              <h3 class='text-center font-semibold text-2xl text-gray-800'>{listTitle}</h3>
 
               {renderLocation()}
               <div className='text-center'>
@@ -57,4 +54,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default withRouter(List);

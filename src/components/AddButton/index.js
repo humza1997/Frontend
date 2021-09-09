@@ -24,7 +24,7 @@ const AddButton = () => {
       .catch(console.warn);
   };
 
-  return <i id='addButton' class='fas fa-plus-circle fa-3x'></i>;
+  return <i id='addButton' className='fas fa-plus-circle fa-3x'></i>;
 };
 
 export default AddButton;

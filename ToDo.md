@@ -1,15 +1,25 @@
-## Features 
-[ ] Scroll Animate for Tech Stack 
-[x] Shuffle Tech Bubbles 
-[ ] Filter Checkboxes for techbubles - make use of Refs, see Filter Branch. Use Redux to store global state? 
-[ ] Lazy Load Gifs 
-[ ] Animate the modals transiton on each card
-[ ] add capton/label words to cv donwload button and title bubbles 
-[x] switch web/graphic cards based on props/boolean 
-[ ] Route without switch 
-[ ] image parallax on portfolio
-[ ] Scroll trigger headings 
+## Map To Do
 
-## Bugs 
-[x] Need to fix Routing Reload error
-[ ] Header and Aside Nav Scroltrigger relative to themselves. Need to use ref, so not dependent on window load location 
+[x] Search to add place
+[x] geoloaction to current place
+[ ] add markers with differnt colours
+[x] Mov API Key
+[ ] View Lists on Map / Filtering
+
+[x] Create fake pin data in store
+[x] Drop pins from store on map
+[x] Drop pins with diff colours of each marker
+[x] Show Pin notes on click
+[x] create case in pin reducer to add pin to list of pins
+[x] Create action creator for Pin creation
+[x] create modal
+[x] autofill modal location from last search
+[x] call action when modal is submitted
+[x] Add pin on last searched location
+[x] Save last pin to the store with a modal for notes anda utofilled name
+[x] re ender all pins
+[ ] add pin on click and add information and save it to the store
+
+## Map To Do
+
+[ ] On close of infobox, map is panning uncessarily

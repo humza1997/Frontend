@@ -1,36 +1,16 @@
 import React, { useEffect, useRef } from "react";
 import "./style.css";
 import { NavLink, useParams } from "react-router-dom";
+import { mdiBorderColor } from "@mdi/js";
 
-const ListCard = ({ name, id, iconClass }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const postData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      password: e.target.messageShav.value,
-    };
-
-    const options = {
-      method: "POST",
-      body: JSON.stringify(postData),
-      headers: { "Content-Type": "application/json" },
-    };
-
-    fetch("/api/*", options)
-      .then((r) => r.json())
-      .then(() => e.target.reset())
-      .catch(console.warn);
-  };
-
+const ListCard = ({ name, id, iconClass, border }) => {
   return (
-    <NavLink to='/list'>
-      <div className='rounded-lg border-red border-2 px-5 my-5'>
+    <NavLink to={`/lists/${id}`}>
+      <div className='rounded-lg border-2 px-5 my-5' style={{ borderColor: `${border}` }}>
         <div className='flex flex-row justify-between mt-3 mb-2'>
           <h1>{name}</h1>
           <p className='hidden'>{id}</p>
-          <i class={iconClass}></i>
+          <i className={iconClass}></i>
         </div>
       </div>
     </NavLink>
