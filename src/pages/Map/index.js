@@ -294,7 +294,6 @@ function Search({ panTo }) {
         clearSuggestions();
         try {
             const results = await getGeocode({ address });
-            console.log(results);
             const { lat, lng } = await getLatLng(results[0]);
             form.lat = lat
             form.lng = lng
